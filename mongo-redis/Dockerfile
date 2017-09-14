@@ -1,4 +1,4 @@
-FROM alpine-phalcon-nginx
+FROM chai65/alpine-phalcon-nginx
 
 MAINTAINER Lê Thành <stash.leth@gmail.com>
 
