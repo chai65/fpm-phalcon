@@ -1,7 +1,9 @@
-FROM php:7.1.7-fpm-alpine
+FROM php:7.1.9-fpm-alpine
 
-ENV PHALCON_VERSION=3.2.1
+ENV PHALCON_VERSION=3.2.2
 ENV PHALCON_DEV_TOOLS_VERSION=3.2.0
+
+MAINTAINER Lê Thành <stash.leth@gmail.com>
 
 # Compile Phalcon
 RUN set -xe && \
