@@ -13,12 +13,14 @@ RUN set -xe && \
     tar xzf v${PHALCON_VERSION}.tar.gz && cd cphalcon-${PHALCON_VERSION}/build && sh install && \
     docker-php-ext-enable phalcon && \
     cd ../.. && rm -rf v${PHALCON_VERSION}.tar.gz cphalcon-${PHALCON_VERSION} && \
-    apk del .build-deps && \
+    apk del .build-deps
+
+
     # Insall Phalcon Devtools, see https://github.com/phalcon/phalcon-devtools/
-    curl -LO https://github.com/phalcon/phalcon-devtools/archive/v${PHALCON_DEV_TOOLS_VERSION}.tar.gz && \
-    tar xzf v${PHALCON_DEV_TOOLS_VERSION}.tar.gz && \
-    mv phalcon-devtools-${PHALCON_DEV_TOOLS_VERSION} /usr/local/phalcon-devtools && \
-    ln -s /usr/local/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
+#    curl -LO https://github.com/phalcon/phalcon-devtools/archive/v${PHALCON_DEV_TOOLS_VERSION}.tar.gz && \
+#    tar xzf v${PHALCON_DEV_TOOLS_VERSION}.tar.gz && \
+#    mv phalcon-devtools-${PHALCON_DEV_TOOLS_VERSION} /usr/local/phalcon-devtools && \
+#    ln -s /usr/local/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
 
 # install another packages
 RUN apk --no-cache add \
@@ -38,4 +40,4 @@ RUN mkdir -p /var/www/html/public
 
 RUN echo "<?php phpinfo();" >> /var/www/html/public/index.php
 
-ENTRYPOINT ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisor/conf.d/supervisord.conf","--logfile", "/var/log/supervisor/supervisord.log","--pidfile", "/var/run/supervisor/supervisord.pid"]
+#ENTRYPOINT ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisor/conf.d/supervisord.conf","--logfile", "/var/log/supervisor/supervisord.log","--pidfile", "/var/run/supervisor/supervisord.pid"]
