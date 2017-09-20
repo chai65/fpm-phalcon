@@ -1,6 +1,6 @@
 # Dockerfile
 
-Small and convenient phalcon alpine image which contains nginx, phalcon, fpm7 
+Small and convenient phalcon alpine image which contains needful modules: nginx, phalcon, fpm7
 
 You can either build the image yourself with the docker file which is hosted on this repository simply by doing a `docker build <directoryname>`
 
