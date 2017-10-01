@@ -23,5 +23,3 @@ RUN set -xe && \
 
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-
-COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
