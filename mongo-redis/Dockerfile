@@ -1,4 +1,4 @@
-FROM chai65/alpine-phalcon-nginx
+FROM chai65/fpm-phalcon:lastest
 
 MAINTAINER Lê Thành <stash.leth@gmail.com>
 
@@ -12,6 +12,3 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     mv /usr/lib/php7/modules/* /usr/local/lib/php/extensions/no-debug-non-zts-20160303 && \
     echo "extension=redis.so" >> /usr/local/etc/php/conf.d/redis.ini && \
     echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini
-
-
-CMD ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisor/conf.d/supervisord.conf","--logfile", "/var/log/supervisor/supervisord.log","--pidfile", "/var/run/supervisor/supervisord.pid"]
