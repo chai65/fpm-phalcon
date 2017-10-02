@@ -1,4 +1,4 @@
-FROM chai65/fpm-phalcon:lastest
+FROM chai65/fpm-phalcon
 
 
 MAINTAINER Lê Thành <stash.leth@gmail.com>
