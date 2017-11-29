@@ -15,4 +15,5 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     echo "extension=redis.so" >> /usr/local/etc/php/conf.d/redis.ini && \
     echo "extension=bcmath.so" >> /usr/local/etc/php/conf.d/bcmath.ini && \
     echo "extension=zip.so" >> /usr/local/etc/php/conf.d/zip.ini && \
-    echo "extension=xsl.so" >> /usr/local/etc/php/conf.d/xsl.ini
+    echo "extension=xsl.so" >> /usr/local/etc/php/conf.d/xsl.ini && \
+    echo "zend_extension=opcache.so" >> /usr/local/etc/php/conf.d/opcache.ini

@@ -20,6 +20,21 @@ RUN set -xe && \
 #    tar xzf v${PHALCON_DEV_TOOLS_VERSION}.tar.gz && \
 #    mv phalcon-devtools-${PHALCON_DEV_TOOLS_VERSION} /usr/local/phalcon-devtools && \
 #    ln -s /usr/local/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
+# install another packages
+RUN apk --no-cache add \
+  supervisor \
+  nginx \
+  && rm -rf /var/cache/apk/*
 
+COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
+
+RUN mkdir -p /var/log/supervisor
+RUN mkdir -p /var/run/supervisor
+COPY config/supervisor/supervisord.ini /etc/supervisor/supervisord.ini
+
+RUN mkdir -p /var/www/html/public
+RUN echo "<?php phpinfo();" >> /var/www/html/public/index.php
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+ENTRYPOINT ['/usr/bin/supervisord', '--nodaemon', '--configuration', '/etc/supervisor/supervisord.ini']
