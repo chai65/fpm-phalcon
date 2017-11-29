@@ -8,7 +8,7 @@ ENV REDIS_VERSION=3.1.3
 
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk --update add php7-json php7-mongodb php7-redis php7-bcmath php7-zip php7-xsl&& \
+    apk --update add php7-json php7-mongodb php7-redis php7-bcmath php7-zip php7-xsl php7-pcntl && \
     mv /usr/lib/php7/modules/* /usr/local/lib/php/extensions/no-debug-non-zts-20160303 && \
     echo "extension=json.so" >> /usr/local/etc/php/conf.d/json.ini && \
     echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini && \
@@ -16,4 +16,5 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repos
     echo "extension=bcmath.so" >> /usr/local/etc/php/conf.d/bcmath.ini && \
     echo "extension=zip.so" >> /usr/local/etc/php/conf.d/zip.ini && \
     echo "extension=xsl.so" >> /usr/local/etc/php/conf.d/xsl.ini && \
+    echo "extension=pcntl.so" >> /usr/local/etc/php/conf.d/xsl.ini && \
     echo "zend_extension=opcache.so" >> /usr/local/etc/php/conf.d/opcache.ini
