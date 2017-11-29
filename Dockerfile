@@ -37,4 +37,4 @@ RUN echo "<?php phpinfo();" >> /var/www/html/public/index.php
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
-ENTRYPOINT ['/usr/bin/supervisord', '--nodaemon', '--configuration', '/etc/supervisor/supervisord.ini']
+ENTRYPOINT ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.ini"]
