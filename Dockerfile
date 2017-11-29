@@ -32,9 +32,10 @@ RUN mkdir -p /var/log/supervisor
 RUN mkdir -p /var/run/supervisor
 COPY config/supervisor/supervisord.ini /etc/supervisor/supervisord.ini
 
+RUN mkdir -p /var/run/nginx
+RUN mkdir -p /var/nginx
+
 RUN mkdir -p /var/www/html/public
 RUN echo "<?php phpinfo();" >> /var/www/html/public/index.php
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
-
-ENTRYPOINT ["/usr/bin/supervisord", "--nodaemon", "--configuration", "/etc/supervisor/supervisord.ini"]
