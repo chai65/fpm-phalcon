@@ -9,7 +9,9 @@ ENV REDIS_VERSION=3.1.3
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    apk --update add tzdata libwebp php7-json php7-mongodb php7-redis php7-bcmath php7-zip php7-xsl php7-pcntl php7-shmop php7-gd php7-apcu && \
+    apk --update --no-cache \
+        add tzdata libwebp php7-json php7-mongodb php7-redis php7-bcmath php7-zip php7-xsl php7-pcntl php7-shmop php7-gd php7-apcu && \
+    rm -rf /var/cache/apk/*
     mv /usr/lib/php7/modules/* /usr/local/lib/php/extensions/no-debug-non-zts-20160303 && \
     echo "extension=json.so" >> /usr/local/etc/php/conf.d/json.ini && \
     echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/mongodb.ini && \
